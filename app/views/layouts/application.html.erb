@@ -1,14 +1,54 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Blog</title>
+    <title>My Music Closet</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Raleway:400,700' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+
+    <div id="sidebar">
+    	<div id="logo">
+	    	<%= link_to root_path do %>
+	    		<h1>Logo</h1><!-- placeholder for image tag -->
+	    	<% end %>	
+    	</div> <!-- /logo -->
+
+    	<ul>
+    		<li class="category">Websites</li>
+    		<li><%= link_to "Blog", root_path %></li>
+    		<li>About</li>
+    	</ul> <!-- /websites ul -->
+
+    	<ul>
+    		<li class="category">Social</li>
+    		<li><a href="https://www.linkedin.com/in/james-f-matthews/" target="_blank">LinkedIn</a></li>
+    		<li><a href="http://jamesmatthews-webdeveloper.bitballoon.com/" target="_blank">Portfolio</a></li>
+    		<li><a href="https://github.com/jfmatthews90" target="_blank">GitHub</a></li>
+    		<li><a href="https://twitter.com/jfmatthews90" target="_blank">Twitter</a></li>
+    	</ul> <!-- /social ul -->
+
+    <p class="sign_in">Admin Login</p>
+  </div> <!-- /sidebar -->
+
+  <div id="main_content">
+	  <div id="header">
+	  	<p>All Posts</p>
+
+	  	<div class="buttons">
+	  		<button class="button"><%= link_to "New Post", new_post_path %></button>
+	  		<button class="button">Log Out</button>
+	  	</div> <!-- /buttons -->
+	  </div> <!-- /header -->
+	  <% flash.each do |name, msg| %>
+	  	<%= content_tag(:div, msg, class: "alert") %>
+	  <% end %> <!-- /flash alert -->
+  	<%= yield %>
+  </div> <!-- /main content -->
+
   </body>
 </html>
