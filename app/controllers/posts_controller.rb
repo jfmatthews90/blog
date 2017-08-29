@@ -18,7 +18,7 @@ class PostsController < ApplicationController
 	end
 
 	def show # allows you to show a post based on its id, which is the /1, /2, etc... in a url
-		@post = Post.find(params[:id]) #
+		@post = Post.find(params[:id])
 	end
 
 	def edit
